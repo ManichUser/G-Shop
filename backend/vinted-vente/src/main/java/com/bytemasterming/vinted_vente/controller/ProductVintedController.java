@@ -1,4 +1,4 @@
-package com.bytemasterming.controller;
+package com.bytemasterming.vinted_vente.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,51 +11,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import com.bytemasterming.model.ProductVinted;
-import com.bytemasterming.model.ProductStatus;
-import com.bytemasterming.repository.ProductVintedRepository;
+import com.bytemasterming.vinted_vente.model.ProductVinted;
+import com.bytemasterming.vinted_vente.model.ProductStatus;
+import com.bytemasterming.vinted_vente.repository.ProductVintedRepository;
 
 @RestController
 @RequestMapping("/api/vinted")
 public class ProductVintedController {
 
-    @Autowired
+  
     private ProductVintedRepository productVintedRepository;
 
-    // Créer un produit
+    ProductVintedController(ProductVintedRepository productVintedRepository) {
+        this.productVintedRepository = productVintedRepository;
+    }
+    
     @PostMapping
     public ProductVinted ajouterProduit(@RequestBody ProductVinted produitVinted) {
         produitVinted.setStatus(ProductStatus.DISPONIBLE);
         return productVintedRepository.save(produitVinted);
     }
 
-    // Produits disponibles
+
     @GetMapping("/disponible")
     public List<ProductVinted> produitsDisponibles() {
         return productVintedRepository.findByStatus(ProductStatus.DISPONIBLE);
     }
 
-    // Produits d'un utilisateur
+
     @GetMapping("/utilisateur/{idUser}")
     public List<ProductVinted> produitsParUtilisateur(@PathVariable String idUser) {
         return productVintedRepository.findByIdUser(idUser);
     }
 
-    // Produits d’un utilisateur avec un statut
-    @GetMapping("/utilisateur/{idUser}/status/{status}")
+   
+    @GetMapping("/utilisateur/{idUser}/status/{status}")  // Produits d’un utilisateur avec un statut
     public List<ProductVinted> produitsUtilisateurParStatut(@PathVariable String idUser, @PathVariable ProductStatus status) {
         return productVintedRepository.findByIdUserAndStatus(idUser, status);
     }
 
-    // Recherche par nom (partiel)
-    @GetMapping("/recherche")
+    
+    @GetMapping("/recherche") // Recherche par nom (partiel)
     public List<ProductVinted> rechercherParNom(@RequestParam String nomProduit) {
         return productVintedRepository.findByProductNameContaining(nomProduit);
     }
 
-    // Produits d'une catégorie
+
     @GetMapping("/categorie/{categorie}")
     public List<ProductVinted> produitsParCategorie(@PathVariable String categorie) {
         return productVintedRepository.findByCategory(categorie);
+    }
+    @GetMapping
+    public List<ProductVinted> tousLesProduits() {
+        return productVintedRepository.findAll();
     }
 }

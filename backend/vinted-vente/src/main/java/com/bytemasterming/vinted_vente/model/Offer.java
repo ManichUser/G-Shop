@@ -1,4 +1,4 @@
-package com.bytemasterming.model;
+package com.bytemasterming.vinted_vente.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

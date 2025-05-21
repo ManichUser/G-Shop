@@ -1,14 +1,13 @@
-package com.bytemasterming.controller;
+package com.bytemasterming.vinted_vente.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.bytemasterming.model.Offer;
-import com.bytemasterming.model.OfferStatus;
-import com.bytemasterming.repository.OfferRepository;
+import com.bytemasterming.vinted_vente.model.Offer;
+import com.bytemasterming.vinted_vente.model.OfferStatus;
+import com.bytemasterming.vinted_vente.repository.OfferRepository;
 
 @RestController
 @RequestMapping("/api/vinted/offres")

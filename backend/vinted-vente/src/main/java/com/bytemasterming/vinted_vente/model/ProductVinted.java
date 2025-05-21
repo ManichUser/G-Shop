@@ -1,4 +1,4 @@
-package com.bytemasterming.model;
+package com.bytemasterming.vinted_vente.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,15 +8,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import com.bytemasterming.model.ProductStatus;
-import com.bytemasterming.model.Offer;
+import com.bytemasterming.vinted_vente.model.ProductStatus;
+import com.bytemasterming.vinted_vente.model.Offer;
 
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "product_vinted")
+@Document(collection = "productVinted")
 public class ProductVinted {
 
     @Id

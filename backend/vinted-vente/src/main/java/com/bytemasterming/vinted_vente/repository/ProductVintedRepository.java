@@ -1,7 +1,7 @@
-package com.bytemasterming.repository;
+package com.bytemasterming.vinted_vente.repository;
 
-import com.bytemasterming.model.ProductVinted;
-import com.bytemasterming.model.ProductStatus;
+import com.bytemasterming.vinted_vente.model.ProductVinted;
+import com.bytemasterming.vinted_vente.model.ProductStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
