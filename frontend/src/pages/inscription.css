@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Inscription{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:  rgb(7, 10, 31);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.Inscription-container{
+    position: relative;
+    display: flex;
+    height: 65vh;
+    width: 70vw;
+    gap: 10px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 2px 25px 20px 0px rgba(18, 25, 71, 0.518);
+    border-radius: 10px;
+
+}
+
+.left-container{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px 20px 20px;
+
+}
+
+#name-app{
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(7, 7, 150);
+}
+
+.btn-container{
+    display: flex;
+    gap: 20px;
+    height: 35px;
+    flex-direction: column;
+    
+    
+}
+.boutton{
+    background-color: rgb(7, 7, 150);
+    padding: 10px;
+    border-radius: 30px;
+    color: #ffffff;
+}
+#logo-google{
+    height: 30px;
+    width: 80px;
+    object-fit: contain;
+}
+
+.right-container{
+    display: flex;
+    color: #ffffff;
+    width: 50%;
+ 
+}
+.form-Inscription{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    background-color: #e3e3e4;
+    border-radius: 20px;
+   
+}
+.info-Inscription{
+    padding: 15px 40px 40px 40px;
+    border-radius: 20px 20px 0 0;
+    background-color: rgb(7, 7, 150);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.info-Inscription>input{
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.bouttons-inscription{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.bouttons-inscription>input{
+    width:100px;
+}
