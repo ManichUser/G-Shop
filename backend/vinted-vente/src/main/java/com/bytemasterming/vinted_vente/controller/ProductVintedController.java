@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Date;
 
 import com.bytemasterming.vinted_vente.model.ProductVinted;
 import com.bytemasterming.vinted_vente.model.ProductStatus;
@@ -19,16 +20,17 @@ import com.bytemasterming.vinted_vente.repository.ProductVintedRepository;
 @RequestMapping("/api/vinted")
 public class ProductVintedController {
 
-  
+    @Autowired
     private ProductVintedRepository productVintedRepository;
 
-    ProductVintedController(ProductVintedRepository productVintedRepository) {
-        this.productVintedRepository = productVintedRepository;
-    }
+    // ProductVintedController(ProductVintedRepository productVintedRepository) {
+    //     this.productVintedRepository = productVintedRepository;
+    // }
     
     @PostMapping
     public ProductVinted ajouterProduit(@RequestBody ProductVinted produitVinted) {
         produitVinted.setStatus(ProductStatus.DISPONIBLE);
+        produitVinted.setDateCreation(new Date());
         return productVintedRepository.save(produitVinted);
     }
 

@@ -30,6 +30,4 @@ public class ProductVinted {
     private double price;
     private String category;
     private Date dateCreation;
-    private List<Offer> offres = new ArrayList<>();
-
 }

@@ -36,8 +36,7 @@ public class OfferController {
 
     @PutMapping("/{offerId}/statut")
     public Offer changerStatut(@PathVariable String offerId, @RequestParam OfferStatus statut) {
-        Offer offre = offerRepository.findById(offerId)
-                .orElseThrow(() -> new RuntimeException("Offre introuvable"));
+        Offer offre = offerRepository.findById(offerId).orElseThrow(() -> new RuntimeException("Offre introuvable"));
         offre.setStatus(statut);
         return offerRepository.save(offre);
     }
