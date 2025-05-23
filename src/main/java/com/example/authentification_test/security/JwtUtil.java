@@ -6,8 +6,11 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.security.Keys;
+
+import java.nio.charset.StandardCharsets;
 import  java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -17,15 +20,18 @@ import java.util.Map;
 public class JwtUtil {
     private Key secretkey;
 
-    //Duree de validite d'un token
-    private  final long expirationMs = 24*60*60*1000;
+    @Value("${jwt.secret}")
+    private String secret;
+
+    private final long expirationMs = 10 * 60 * 60 * 1000;
 
     @PostConstruct
-    public void init(){
-        this.secretkey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    public void init() {
+        this.secretkey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    //Genere un token contenant l'id et le role actif
+
+//Genere un token contenant l'id et le role actif
     public String generateToken(User user){
         Map<String,Object> claims = new HashMap<>();
         claims.put("role",user.getCurrentRole().name());

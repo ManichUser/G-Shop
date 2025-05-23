@@ -9,5 +9,5 @@ import lombok.Data;
 public class AuthResponse {
     private String accessToken;
     private Role currentRole;
-    //private String tokenType="Bearer";
+    //private String tokenType="Bearer ";
 }

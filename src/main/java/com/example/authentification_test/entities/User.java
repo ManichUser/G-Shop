@@ -45,7 +45,7 @@ public class User {
         if (hasRole(newRole)){
             this.currentRole = newRole;
         } else{
-            throw new IllegalArgumentException("ROle non autorise pour cet utilisateur");
+            throw new IllegalArgumentException("Role non autorise pour cet utilisateur");
         }
     }
 }

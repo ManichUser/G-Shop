@@ -6,10 +6,12 @@ import com.example.authentification_test.dto.LoginRequest;
 import com.example.authentification_test.dto.RegisterRequest;
 import com.example.authentification_test.entities.Role;
 import com.example.authentification_test.service.AuthService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Authentification", description = "Endpoints pour l'authentification et le switch role")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor

@@ -13,5 +13,5 @@ public class RegisterRequest {
     private String adress;
 
     //le role choisi par le user a l'inscription
-    private Role selectedRole;
+    //private Role selectedRole;
 }
