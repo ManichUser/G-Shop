@@ -1,0 +1,30 @@
+# === Java / Spring Boot ===
+*.class
+*.jar
+*.war
+*.log
+
+# === Maven ===
+target/
+
+# === Gradle ===
+build/
+.gradle/
+
+# === IDEs ===
+*.iml
+.idea/
+.vscode/
+out/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Fichiers sensibles ===
+.env
+application-secret.yml
+
+# === Test & coverage ===
+coverage/
+test-output/

@@ -1,0 +1,34 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment_db
+    username: triomphe
+    password: bonjour237
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        "[format_sql]": true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  application:
+    name: payment-service
+
+
+pawapay:
+  api:
+    key: eyJraWQiOiIxIiwiYWxnIjoiRVMyNTYifQ.eyJ0dCI6IkFBVCIsInN1YiI6Ijc0MjIiLCJtYXYiOiIxIiwiZXhwIjoyMDYzNDM1NzgxLCJpYXQiOjE3NDc5MDI5ODEsInBtIjoiREFGLFBBRiIsImp0aSI6ImE4OTA5MjZjLTllNjUtNGU3Zi1hZWYyLWQ1ZDM1YzE0MTEzZiJ9.P7e_oqLxy3CyO4E_u9dt0vx7EGnH7Tzq0-RRmJ-wJdL_PqxRqMTkvDWf3SxuvWJ-dd4FMReAWavRA2owWIubBg
+    url: https://api.sandbox.pawapay.io/v1
+
+## Sécurité désactivée pour les tests
+#  spring:
+#  security:
+#    user:
+#      name: admin
+#      password: admin
