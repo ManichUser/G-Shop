@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Masquer globalement toutes les scrollbars, tout en gardant le scroll */
+* {
+  -ms-overflow-style: none;  /* IE et Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari et Opera */
+}

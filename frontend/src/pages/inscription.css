@@ -51,6 +51,7 @@
 .boutton{
     background-color: rgb(7, 7, 150);
     padding: 10px;
+    text-align: center;
     border-radius: 30px;
     color: #ffffff;
 }
@@ -64,17 +65,17 @@
     display: flex;
     color: #ffffff;
     width: 50%;
- 
+
 }
 .form-Inscription{
     height: 100%;
     display: flex;
     align-items: center;
     width: 100%;
+    color: white;
     flex-direction: column;
     background-color: #e3e3e4;
     border-radius: 20px;
-   
 }
 .info-Inscription{
     padding: 15px 40px 40px 40px;

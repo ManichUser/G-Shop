@@ -1,5 +1,7 @@
 import './inscription.css'
+import { Link } from 'react-router-dom'
 import GoogleLogo from '../assets/google-logo.png' 
+
 
 export default function Inscription (){
 
@@ -7,7 +9,7 @@ export default function Inscription (){
         <div className="Inscription" >
 
                 <div className="Inscription-container">
-
+                
                 <div className="left-container">
                     <label id="name-app">G-Shop</label>
                     <h1 style={{fontSize:37}} id="titre-container" >S'inscrire ou se connecter</h1>
@@ -20,7 +22,7 @@ export default function Inscription (){
                             <p id="google-btn">Continuer avec </p>
                             <img id='logo-google' src={GoogleLogo} alt='logo-google' />
                         </div>
-                        <button style={{width:200}} className='boutton' id="register">Se connecter</button>
+                        <Link to="/login" style={{width:200,color:'white'}} className='boutton' id="connection">Se connecter</Link>
                     </div>
 
                 </div>
@@ -42,10 +44,8 @@ export default function Inscription (){
                         <div className='bouttons-inscription' >
                         <input className='boutton' type='reset'  name='annuler' id='annuler-btn'/>
                             <input className='boutton' type='submit' name='login' id="Inscription-btn" />
-                           
                         </div>
                     </form>
-             
                 </div>
             </div> 
 
