@@ -1,34 +1,37 @@
-server:
-  port: 8082
-
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/payment_db
-    username: triomphe
-    password: bonjour237
-    driver-class-name: org.postgresql.Driver
+  application:
+    name: payment-service
+  # --- Configuration du Serveur embarqué (WebFlux) ---
+  server:
+    port: 8080
 
+  # --- Configuration de la Base de Données PostgreSQL ---
+  datasource:
+    url: jdbc:postgresql://localhost:5432/paymentsdb
+    username: triomphe
+    password: maths4321
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
-        "[format_sql]": true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
 
-  application:
-    name: payment-service
+  # --- Configuration Eureka Client (désactivé si pas de serveur Eureka) ---
+  cloud:
+    eureka:
+      client:
+        enabled: false
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+    # --- Désactiver le client Spring Cloud Config (déjà fait) ---
+    config:
+      enabled: false
 
-
-pawapay:
-  api:
-    key: eyJraWQiOiIxIiwiYWxnIjoiRVMyNTYifQ.eyJ0dCI6IkFBVCIsInN1YiI6Ijc0MjIiLCJtYXYiOiIxIiwiZXhwIjoyMDYzNDM1NzgxLCJpYXQiOjE3NDc5MDI5ODEsInBtIjoiREFGLFBBRiIsImp0aSI6ImE4OTA5MjZjLTllNjUtNGU3Zi1hZWYyLWQ1ZDM1YzE0MTEzZiJ9.P7e_oqLxy3CyO4E_u9dt0vx7EGnH7Tzq0-RRmJ-wJdL_PqxRqMTkvDWf3SxuvWJ-dd4FMReAWavRA2owWIubBg
-    url: https://api.sandbox.pawapay.io/v1
-
-## Sécurité désactivée pour les tests
-#  spring:
-#  security:
-#    user:
-#      name: admin
-#      password: admin
+# Configuration des APIs Orange et MTN (simulées pour le moment)
+#orange-api:
+#  url: http://localhost:8083/mock-orange-api/payment # URL du service Orange Money (mock ou réel)
+#mtn-api:
+#  url: http://localhost:8081/mock-mtn-api/payment # URL du service MTN Mobile Money (mock ou réel)

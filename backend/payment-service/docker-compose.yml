@@ -1,0 +1,41 @@
+
+services:
+  # Service de base de données PostgreSQL
+  postgres:
+    image: postgres:15-alpine # Utilise une image PostgreSQL officielle
+    environment:
+      POSTGRES_DB: paymentsdb
+      POSTGRES_USER: triomphe
+      POSTGRES_PASSWORD: maths4321
+    #ports:
+      #- "5432:5432" # Mappe le port 5432 de l'hôte au conteneur
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - gshop-network
+
+  # microservice de paiement
+  payment-service:
+    build: .
+    ports:
+      - "8080:8080" # Mappe le port 8080 de l'hôte au conteneur pour accéder à ton service
+    environment:
+      # Configuration de la connexion à la base de données (le nom du service 'postgres' est utilisé comme hôte)
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/paymentsdb
+      SPRING_DATASOURCE_USERNAME: triomphe
+      SPRING_DATASOURCE_PASSWORD: maths4321
+      # ORANGE_API_URL: http://mock-orange-api:8083/mock-orange-api/payment
+      # MTN_API_URL: http://mock-mtn-api:8081/mock-mtn-api/payment
+      # SPRING_CLOUD_EUREKA_CLIENT_ENABLED: "false" # Maintenu à false comme dans ton application.yml
+      # SPRING_CLOUD_CONFIG_ENABLED: "false" # Maintenu à false comme dans ton application.yml
+    depends_on:
+      - postgres
+    networks:
+      - gshop-network
+
+volumes:
+  postgres_data:
+
+networks:
+  gshop-network:
+    driver: bridge
