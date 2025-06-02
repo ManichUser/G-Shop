@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.monapp.products_service.dto.ProduitRequestDTO;
 import com.monapp.products_service.model.Produit;
 import com.monapp.products_service.repository.ProduitRepository;
 
@@ -32,19 +33,27 @@ public class ProduitService {
         return produitRepository.findAll();
     }
 
+    // Lister tous les produits d’un grossiste
+    public List<Produit> obtenirProduitsParGrossiste(Long idGrossiste) {
+        return produitRepository.findByIdGrossiste(idGrossiste);
+}
+
+
     // Mettre à jour un produit existant
-    public Optional<Produit> mettreAJourProduit(Long id, Produit produitModifie) {
-        return produitRepository.findById(id).map(produit -> {
-            produit.setNom(produitModifie.getNom());
-            produit.setDescription(produitModifie.getDescription());
-            produit.setPrixUnitaire(produitModifie.getPrixUnitaire());
-            produit.setSeuilMinimum(produitModifie.getSeuilMinimum());
-            produit.setQuantiteDisponible(produitModifie.getQuantiteDisponible());
-            produit.setDateLimiteGroupage(produitModifie.getDateLimiteGroupage());
-            produit.setImage(produitModifie.getImage());
-            return produitRepository.save(produit);
-        });
-    }
+   public Optional<Produit> mettreAJourProduit(Long id, ProduitRequestDTO dto) {
+    return produitRepository.findById(id).map(produit -> {
+        produit.setNom(dto.getNom());
+        produit.setDescription(dto.getDescription());
+        produit.setPrixUnitaire(dto.getPrixUnitaire());
+        produit.setSeuilMinimum(dto.getSeuilMinimum());
+        produit.setQuantiteDisponible(dto.getQuantiteDisponible());
+        produit.setDateLimiteGroupage(dto.getDateLimiteGroupage());
+        produit.setImage(dto.getImage());
+        produit.setIdGrossiste(dto.getIdGrossiste()); // 👈 ajouter cette ligne
+        return produitRepository.save(produit);
+    });
+}
+
 
     // Supprimer un produit
     public boolean supprimerProduit(Long id) {

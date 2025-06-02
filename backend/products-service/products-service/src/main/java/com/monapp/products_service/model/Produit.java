@@ -44,5 +44,8 @@ public class Produit {
 
     @Column(name = "date_creation")
     private LocalDateTime dateCreation = LocalDateTime.now();
+
+    @Column(name = "id_grossiste")
+    private Long idGrossiste;
 }
 

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.monapp.products_service.dto.ProduitRequestDTO;
+import com.monapp.products_service.dto.ProduitResponseDTO;
 import com.monapp.products_service.model.Produit;
 import com.monapp.products_service.service.ProduitService;
 
@@ -48,11 +50,21 @@ public class ProduitController {
 
     // PUT /api/produits/{id}
     @PutMapping("/{id}")
-    public ResponseEntity<Produit> mettreAJourProduit(@PathVariable Long id, @RequestBody Produit produit) {
-        return produitService.mettreAJourProduit(id, produit)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+public ResponseEntity<ProduitResponseDTO> mettreAJourProduit(@PathVariable Long id, @RequestBody ProduitRequestDTO dto) {
+    return produitService.mettreAJourProduit(id, dto)
+            .map(ProduitResponseDTO::fromEntity)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+}
+
+
+    @GetMapping("/grossiste/{idGrossiste}")
+    public List<ProduitResponseDTO> listerParGrossiste(@PathVariable Long idGrossiste) {
+    return produitService.obtenirProduitsParGrossiste(idGrossiste).stream()
+            .map(ProduitResponseDTO::fromEntity)
+            .toList();
+}
+
 
     // DELETE /api/produits/{id}
     @DeleteMapping("/{id}")
