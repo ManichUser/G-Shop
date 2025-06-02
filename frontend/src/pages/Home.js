@@ -6,7 +6,8 @@ import AirepordImg from '../assets/Airpord.png';
 import MontreImg from '../assets/montre_connecter.png';
 import { ChevronLeft,ChevronRight, Home,TabletSmartphone} from "lucide-react";
 import { FaChevronLeft,FaChevronRight,FaHome,FaHeartbeat,FaTshirt,FaMobileAlt } from "react-icons/fa";
-import './home.css'
+import './home.css';
+
 
 
 
@@ -131,7 +132,18 @@ const categories = [
 
 export default function HomePage(){
     const ProductPopularContainer=document.getElementsByClassName('product-popular-container')
-    
+    const myGroupageData = {
+        id: 'grp-002',
+        productName: 'Casque Bluetooth Pro',
+        targetQuantity: 20,
+        currentQuantity: 15,
+        pricePerUnit: 120,
+        regularPrice: 180,
+        deadline: '2025-07-15T18:00:00',
+        image: './téléchargement.jpeg',
+        participants: [{name: 'Marie'}, {name: 'Pierre'}],
+        description: "Obtenez le casque pro avec une réduction de 30% !"
+      };
     const [currentIndex, setCurrentIndex] = useState(0);
     return(
         <div className="Home">
@@ -184,6 +196,10 @@ export default function HomePage(){
                     ))}
             </div>
                 </section>
+                </div>
+
+                <div>
+                  
                 </div>
         
         </div>

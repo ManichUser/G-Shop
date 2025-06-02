@@ -1,0 +1,11 @@
+
+// src/App.js ou src/pages/Groupages.js
+import React from 'react';
+import GroupageCard from './GroupageCard'; // Assurez-vous du bon chemin
+
+function App() {
+  // Vous pouvez passer des données de groupage réelles ici, par exemple depuis une API
+  
+}
+
+export default App;

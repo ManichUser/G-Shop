@@ -12,6 +12,10 @@ import Inscription from './pages/Inscription';
 import Login from './pages/Login';
 import FournisseurFormulaire from './components/formulaire_fournisseur';
 import FloatingIcon from "./components/FloatingIcons";
+import GroupagesPage from "./pages/GroupagesPage";
+
+
+
 
 function App() {
   return (
@@ -28,10 +32,19 @@ function App() {
         <Route path="/s'inscrire" element={<Inscription/>} />
         <Route path="/login" element={<Login/>} />
         <Route path='/Formulaire-Fournisseur' element={<FournisseurFormulaire/>}/>
+        <Route path="/groupagesPage" element={<GroupagesPage/>}/> 
+
+        
+        
+        
+
+
       </Routes>
      </Router>
    
   );
 }
+
+
 
 export default App;
