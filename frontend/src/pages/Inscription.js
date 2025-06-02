@@ -33,13 +33,13 @@ export default function Inscription (){
                     
                         <div className="info-Inscription">
                             <h1>S'inscrire</h1>
-                            <p style={{padding:7,fontSize:13}}> Inscrivez-vous maintenant et beneficiez de nos fonctionnalites
+                            <p style={{padding:7,fontSize:13,color:'white'}}> Inscrivez-vous maintenant et beneficiez de nos fonctionnalites
                                 exclusives en matieres d'achats vente
                             </p>
                             <input required id="input-name" type="text" placeholder="Entrer un nom d'utilisisateur"/>
                             <input required id=" input-password" type="text" placeholder="Entre un mot de passe"/>
                             <input required id=" input-password" type="text" placeholder="Repeter le mot de passe"/>
-                            <p style={{padding:7,fontSize:13}} className='message-for-user' id="error-msg">Le mot de passe doit avoir au moins 8 caracteres dont au minimum 1 chiffre </p>
+                            <p style={{padding:7,fontSize:13,color:'red'}} className='message-for-user' id="error-msg">Le mot de passe doit avoir au moins 8 caracteres dont au minimum 1 chiffre </p>
                         </div>
                         <div className='bouttons-inscription' >
                         <input className='boutton' type='reset'  name='annuler' id='annuler-btn'/>
