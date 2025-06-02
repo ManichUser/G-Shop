@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import Home from './pages/Home';
+import HomePage from './pages/Home';
 import Navbar from './components/navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FournisseurSpace from './pages/Fourmisseur-Space';
@@ -19,7 +19,7 @@ function App() {
       <Navbar/>
       <FloatingIcon/>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<HomePage/>} />
         <Route path="/Fournisseur-Space" element={<FournisseurSpace/>} />
         <Route path="/produits" element={<Produits/>} />
         <Route path="/Produits-vinted" element={<ProduitsVinted/>} />

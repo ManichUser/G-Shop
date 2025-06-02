@@ -14,3 +14,11 @@ img{
     width: 150px;
     object-fit: cover;
 }
+.footer_ProduitCard{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+}

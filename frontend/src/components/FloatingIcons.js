@@ -13,7 +13,7 @@ import {
 const icons = [
   <FaShoppingBag size={48} color="blue" />,
   <FaBoxOpen color="red" size={45} />,
-  <FaCreditCard size={80} color="yellow" />,
+  <FaCreditCard size={80} color="gold" />,
   <FaTags size={34} color="rgb(7,7,150)" />,
   <FaTruck size={30} />,
   <ShoppingBag size={30} color="#f87171" />,
