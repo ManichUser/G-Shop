@@ -13,9 +13,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Document(collection = "offers")
 public class Offer {
-
+    
     @Id
-    private String id;
+    @GeneratedValue(strategy=GenerationType,IDENTITY)
+    private Long id;
+
 
     private String productId;
     private String buyerId;

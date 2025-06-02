@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import jarkata.persistence.*;
 import com.bytemasterming.vinted_vente.model.ProductStatus;
 import com.bytemasterming.vinted_vente.model.Offer;
 
@@ -20,7 +21,8 @@ import com.bytemasterming.vinted_vente.model.Offer;
 public class ProductVinted {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy=GenerationType,IDENTITY)
+    private Long id;
 
     private String idUser;
     private String productName;
