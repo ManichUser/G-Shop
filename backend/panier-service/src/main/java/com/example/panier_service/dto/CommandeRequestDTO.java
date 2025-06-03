@@ -3,14 +3,14 @@ package com.example.panier_service.dto;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
+import jakarta.validation.constraints.NotNull;
 @Data
 public class CommandeRequestDTO {
 
-    @NotBlank
+    @NotNull
     private String userId;
 
-    @NotBlank
+    @NotNull
     private Long productId;
 
     @Min(1)

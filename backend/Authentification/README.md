@@ -1,2 +1,0 @@
-# G-Shop
-Grouping-Shop
