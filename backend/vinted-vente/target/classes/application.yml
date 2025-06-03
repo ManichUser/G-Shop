@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: vinted-vente
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/product_vinted_db
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+  
+upload:
+  directory: uploads/images  # Dossier local où enregistrer les fichiers
+
+server:
+  url: http://localhost:8080  # URL publique de ton backend
