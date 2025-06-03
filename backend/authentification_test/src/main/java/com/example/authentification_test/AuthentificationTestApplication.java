@@ -13,7 +13,7 @@ import java.util.Set;
 
 import static org.apache.logging.log4j.ThreadContext.isEmpty;
 
-@EnableEurekaClient
+
 @SpringBootApplication
 public class AuthentificationTestApplication {
 
