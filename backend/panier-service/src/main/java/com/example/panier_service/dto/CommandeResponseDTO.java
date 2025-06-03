@@ -12,7 +12,7 @@ public class CommandeResponseDTO {
 
     private String id;
     private String userId;
-    private String productId;
+    private Long productId;
     private int quantity;
     private Instant createdAt;
       private CommandeStatus status;

@@ -10,11 +10,11 @@ import java.util.List;
 public interface CommandeRepository extends MongoRepository<Commande, String> {
 
     List<Commande> findByUserId(String userId);
-    List<Commande> findByProductId(String productId);
+    List<Commande> findByProductId(Long productId);
     
     // Somme des quantités pour un produit donné
     @Query(value = "{ 'productId': ?0 }", fields = "{ 'quantity': 1 }")
-    List<Commande> findAllByProductId(String productId);
+    List<Commande> findAllByProductId(Long productId);
 
 
 }

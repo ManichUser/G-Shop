@@ -14,7 +14,7 @@ public interface CommandeService {
 
     List<CommandeResponseDTO> getCommandesByUserId(String userId);
 
-    List<CommandeResponseDTO> getCommandesByProductId(String productId);
+    List<CommandeResponseDTO> getCommandesByProductId(Long productId);
 
     void deleteCommande(String id);
     

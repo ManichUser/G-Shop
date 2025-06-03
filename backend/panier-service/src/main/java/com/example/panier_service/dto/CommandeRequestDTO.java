@@ -11,7 +11,7 @@ public class CommandeRequestDTO {
     private String userId;
 
     @NotBlank
-    private String productId;
+    private Long productId;
 
     @Min(1)
     private int quantity;

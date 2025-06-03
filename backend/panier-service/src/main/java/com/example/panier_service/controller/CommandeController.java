@@ -44,7 +44,7 @@ public class CommandeController {
     }
 
     @GetMapping("/product/{productId}")
-    public List<CommandeResponseDTO> getByProductId(@PathVariable String productId) {
+    public List<CommandeResponseDTO> getByProductId(@PathVariable Long productId) {
         return commandeService.getCommandesByProductId(productId);
     }
 

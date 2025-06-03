@@ -20,7 +20,7 @@ public class Commande {
     private String id;
 
     private String userId;
-    private String productId;
+    private Long productId;
     private int quantity;
 
     @Builder.Default
