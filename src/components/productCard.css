@@ -1,0 +1,24 @@
+.ProductCard{
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 10px;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+.footer_ProduitCard{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+}

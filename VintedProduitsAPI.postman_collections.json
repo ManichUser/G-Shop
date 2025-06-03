@@ -1,0 +1,98 @@
+{
+    "info": {
+      "name": "Vinted Product API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Ajouter un produit",
+        "request": {
+          "method": "POST",
+          "header": [{ "key": "Content-Type", "value": "application/json" }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"idUser\": \"user00\",\n  \"productName\": \"Chemise Vintage\",\n  \"description\": \"Chemise années 80 très tendance\",\n  \"price\": 29.99,\n  \"category\": \"Vêtements\",\n  \"imageUrl\": \"http://image.com/chemise.jpg\"\n}"
+          },
+          "url": {
+            "raw": "http://localhost:8080/api/vinted",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["api", "vinted"]
+          }
+        }
+      },
+      {
+        "name": "Lister les produits disponibles",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:8080/api/vinted/disponible",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["api", "vinted", "disponible"]
+          }
+        }
+      },
+      {
+        "name": "Lister les produits d’un utilisateur",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:8080/api/vinted/utilisateur/user123",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["api", "vinted", "utilisateur", "user123"]
+          }
+        }
+      },
+      {
+        "name": "Lister les produits d’un utilisateur par statut",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:8080/api/vinted/utilisateur/user123/status/DISPONIBLE",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["api", "vinted", "utilisateur", "user123", "status", "DISPONIBLE"]
+          }
+        }
+      },
+      {
+        "name": "Rechercher un produit par nom",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:8080/api/vinted/recherche?nomProduit=Chemise",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["api", "vinted", "recherche"],
+            "query": [
+              {
+                "key": "nomProduit",
+                "value": "Chemise"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Lister les produits par catégorie",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "http://localhost:8080/api/vinted/categorie/Vêtements",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "8080",
+            "path": ["api", "vinted", "categorie", "Vêtements"]
+          }
+        }
+      }
+    ]
+  }
+  

@@ -1,0 +1,145 @@
+/* .about-us {
+    background-color: #4caf50; 
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .about-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(226, 153, 18);
+    text-transform: uppercase;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .about-text {
+    font-size: 18px;
+    margin: 20px 0;
+    line-height: 1.6;
+    animation: slideUp 1.5s ease-out;
+  }
+  
+  .about-team {
+    margin-top: 50px;
+    font-size: 20px;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+   */
+
+   .about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0,0.1); 
+    color: black;
+    padding: 50px 20px;
+    height: 100vh; /* Toute la hauteur de l'écran */
+    text-align: center;
+  }
+  
+  .about-content {
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .about-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(7, 7, 150);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .about-text {
+    font-size: 18px;
+    margin: 20px 0;
+    line-height: 1.6;
+    animation: slideUp 1.5s ease-out;
+  }
+  
+  /* Section de l'équipe */
+  .about-team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .team-member {
+    margin: 20px;
+    text-align: center;
+    flex: 1 1 300px; /* Ajoute une flexibilité */
+    max-width: 300px;
+  }
+  
+  .team-member img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .team-member h3 {
+    font-size: 22px;
+    color: rgb(7,7,150);
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .team-member p {
+    font-size: 16px;
+    color: black;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: 28px;
+    }
+  
+    .about-text {
+      font-size: 16px;
+    }
+  
+    .team-member {
+      flex: 1 1 100%;
+    }
+  }
+  .GS-container{
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    left: 88vw;
+    bottom: 80vh;
+    font-size: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    gap: 3px;
+    color: black;
+   
+  }
