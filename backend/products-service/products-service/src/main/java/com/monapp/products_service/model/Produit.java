@@ -38,14 +38,12 @@ public class Produit {
     private Integer quantiteDisponible;
 
     @Column(name = "date_limite_groupage")
-    private LocalDateTime dateLimiteGroupage;
+    private LocalDateTime dateLimiteGroupage = new LocalDateTime().now();
 
     private String image; // URL ou nom de fichier
 
     @Column(name = "date_creation")
     private LocalDateTime dateCreation = LocalDateTime.now();
 
-    @Column(name = "id_grossiste")
-    private Long idGrossiste;
 }
 
