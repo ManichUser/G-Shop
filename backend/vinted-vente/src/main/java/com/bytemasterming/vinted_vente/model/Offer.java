@@ -13,15 +13,17 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Document(collection = "offers")
 public class Offer {
-
+    
     @Id
-    private String id;  // MongoDB gère les ID sous forme de String
+    @GeneratedValue(strategy=GenerationType,IDENTITY)
+    private Long id;
+
 
     private String productId;
     private String buyerId;
-    private Double offerPrice;       
-    private double montant;         
-    private LocalDateTime offerDate = LocalDateTime.now();  
-    private OfferStatus status = OfferStatus.EN_ATTENTE;  
-    private String message;           
+    private Double offerPrice;        // Prix proposé par l'acheteur
+    private double montant;           // Montant final (si négocié)
+    private LocalDateTime offerDate;  // Date de l'offre
+    private OfferStatus status;       // EN_ATTENTE, ACCEPTEE, etc.
+    private String message;           // Message personnalisé optionnel
 }

@@ -1,0 +1,211 @@
+
+/* src/components/GroupageCard.css */
+
+/* Le conteneur principal de la carte elle-même */
+.groupage-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px; /* Taille typique pour une carte individuelle */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .groupage-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .groupage-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .groupage-image {
+    width: 100px; /* Taille de l'image plus petite pour une carte */
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .groupage-info h2 {
+    font-size: 1.4em; /* Taille du titre ajustée */
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .groupage-info .groupage-description {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.4;
+  }
+  
+  .groupage-details {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr; /* Une seule colonne par défaut pour les détails sur les cartes */
+    gap: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .price-info,
+  .quantity-info,
+  .deadline-info {
+    background-color: #fcfcfc;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+  }
+  
+  .price-info p,
+  .quantity-info p,
+  .deadline-info p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .price-info .regular-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.8em;
+  }
+  
+  .price-info .groupage-price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .quantity-info strong {
+    color: #007bff;
+  }
+  
+  .progress-bar-wrapper {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 8px; /* Hauteur de la barre réduite */
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .remaining-quantity {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 8px !important;
+  }
+  
+  .achieved-goal {
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 8px !important;
+  }
+  
+  .deadline-info strong {
+    color: #ffc107;
+  }
+  
+  .deadline-passed {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  .groupage-participants {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .groupage-participants h3 {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 3px;
+    display: inline-block;
+  }
+  
+  .participants-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .participant-tag {
+    background-color: #e9f7ff;
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    border: 1px solid #b3e0ff;
+  }
+  
+  .participant-tag.placeholder {
+    background-color: #f8f8f8;
+    color: #888;
+    border-style: dashed;
+  }
+  
+  .groupage-actions {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .participate-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+  }
+  
+  .participate-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .participate-button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* --- Responsive Design pour la carte unique --- */
+  @media (max-width: 480px) {
+    .groupage-header {
+      flex-direction: column;
+      text-align: center;
+      padding: 15px;
+    }
+    .groupage-image {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .groupage-info h2 {
+      font-size: 1.2em;
+    }
+    .groupage-details,
+    .groupage-participants,
+    .groupage-actions {
+      padding: 10px;
+    }
+  }

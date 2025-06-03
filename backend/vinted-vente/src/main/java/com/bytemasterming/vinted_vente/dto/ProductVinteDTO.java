@@ -1,11 +1,5 @@
 package com.bytemasterming.vinted_vente.dto;
 
-import com.bytemasterming.vinted_vente.model.Offer;
-import com.bytemasterming.vinted_vente.model.ProductStatus;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 public class ProductVintedDTO {
     private Long id;
 

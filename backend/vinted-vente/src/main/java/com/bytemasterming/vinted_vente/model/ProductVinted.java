@@ -5,10 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import jarkata.persistence.*;
+import com.bytemasterming.vinted_vente.model.ProductStatus;
+import com.bytemasterming.vinted_vente.model.Offer;
+
+
 
 @Data
 @NoArgsConstructor
@@ -17,7 +21,8 @@ import java.util.ArrayList;
 public class ProductVinted {
 
     @Id
-    private String id; // MongoDB utilise une String comme ID par défaut
+    @GeneratedValue(strategy=GenerationType,IDENTITY)
+    private Long id;
 
     private String idUser;
     private String productName;
@@ -26,6 +31,7 @@ public class ProductVinted {
     private String imageUrl;
     private double price;
     private String category;
-    private Date dateCreation = new Date();
+    private Date dateCreation;
     private List<Offer> offres = new ArrayList<>();
+
 }

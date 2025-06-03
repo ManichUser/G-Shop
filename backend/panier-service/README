@@ -1,0 +1,248 @@
+
+````markdown
+# Microservice Commande (Panier Service)
+
+## Description
+
+Ce microservice gère les commandes (panier) dans une architecture microservices.  
+Il permet la création, la consultation, la mise à jour du statut et la suppression des commandes.  
+Il s’intègre avec un microservice Produit pour vérifier les seuils de groupage avant validation des commandes.
+
+---
+
+## Fonctionnalités principales
+
+- Créer une commande avec validation du seuil de groupage.
+- Lister toutes les commandes.
+- Lister les commandes par utilisateur.
+- Lister les commandes par produit.
+- Mettre à jour le statut d’une commande.
+- Supprimer une commande.
+
+---
+
+## Technologies utilisées
+
+- Java 17+
+- Spring Boot
+- Spring Data MongoDB
+- Spring Web MVC (REST API)
+- Validation via Jakarta Validation (JSR 380)
+- Lombok
+- Eureka Client (service discovery)
+- Feign Client (communication inter-service)
+- MongoDB (base de données NoSQL)
+
+---
+
+## Configuration et déploiement
+
+### Prérequis
+
+- Java 17 ou supérieur
+- MongoDB en fonctionnement
+- Accès au microservice Produit via Feign client
+- Serveur Eureka pour service discovery
+
+### Variables de configuration importantes (application.properties / application.yml)
+
+- `spring.data.mongodb.uri` : URI de connexion à MongoDB
+- `eureka.client.service-url.defaultZone` : URL du serveur Eureka
+- Configuration Feign pour communiquer avec le microservice Produit
+
+---
+
+## Structure des routes REST
+
+| Méthode | URI                          | Description                                        |
+|---------|------------------------------|--------------------------------------------------|
+| POST    | `/api/commandes`              | Créer une nouvelle commande                       |
+| GET     | `/api/commandes`              | Récupérer toutes les commandes                    |
+| GET     | `/api/commandes/user/{userId}` | Récupérer commandes d’un utilisateur              |
+| GET     | `/api/commandes/product/{productId}` | Récupérer commandes d’un produit                   |
+| DELETE  | `/api/commandes/{id}`         | Supprimer une commande                            |
+| PATCH   | `/api/commandes/{id}/status` | Mettre à jour le statut d’une commande            |
+
+---
+
+## Exemple de payload pour créer une commande (POST `/api/commandes`)
+
+```json
+{
+  "userId": "user123",
+  "productId": "prod456",
+  "quantity": 5,
+  "seuil": 20
+}
+````
+
+* `userId` : identifiant de l’utilisateur
+* `productId` : identifiant du produit
+* `quantity` : quantité commandée
+* `seuil` : seuil maximum autorisé pour le groupage (fourni côté client)
+
+---
+
+## Gestion du seuil de groupage
+
+Avant de créer une commande, le microservice :
+
+* Interroge le microservice Produit via Feign Client pour récupérer le seuil réel du produit.
+* Calcule la somme des quantités déjà commandées pour ce produit.
+* Refuse la création si la nouvelle quantité cumulée dépasse le seuil.
+
+---
+
+## Mise à jour du statut d’une commande (PATCH `/api/commandes/{id}/status`)
+
+Paramètre query `status` pouvant prendre les valeurs de l’énumération `CommandeStatus` :
+
+* CREATED
+* PAID
+* CANCELLED
+* ...
+
+---
+
+## Intégration avec Eureka
+
+Le microservice est configuré comme client Eureka pour s’enregistrer automatiquement et découvrir les autres services.
+
+---
+
+## Lancement du projet
+
+```bash
+./mvnw spring-boot:run
+```
+
+Ou via l’IDE avec la classe principale `PanierServiceApplication`.
+
+---
+
+## Améliorations possibles
+
+* Ajout d’authentification et d’autorisation (OAuth2 / JWT)
+* Pagination et filtres pour les requêtes GET
+* Gestion avancée des erreurs avec messages API standardisés
+* Documentation Swagger 
+
+---
+
+## Contact
+
+Pour toute question ou contribution, merci de me contacter.
+
+
+```
+
+---
+
+Bien sûr, voici un **cahier des charges détaillé** pour la future intégration de la vérification du seuil de groupage via le microservice Produit (avec Feign ou un autre client HTTP), que tu pourras reprendre facilement plus tard.
+
+---
+
+# Cahier des charges — Intégration seuil de groupage produit via microservice Produit
+
+## Contexte
+
+L’application Commande doit garantir qu’une commande ne dépasse pas un certain seuil de groupage défini par produit. Ce seuil est géré dans le microservice Produit. Actuellement, cette vérification n’est pas implémentée car le microservice Produit n’est pas encore disponible.
+
+---
+
+## Objectif
+
+Mettre en place la vérification automatique, côté microservice Commande, du seuil de groupage du produit commandé. Si la somme des quantités commandées dépasse ce seuil, la création de la commande doit être refusée.
+
+---
+
+## Fonctionnalités à implémenter
+
+### 1. Communication inter-microservices
+
+* Utiliser **Feign Client** (ou un autre client HTTP REST, ex: WebClient) pour appeler le microservice Produit.
+* Implémenter une méthode client dans Commande pour récupérer les détails d’un produit par son `productId`.
+* Le microservice Produit doit exposer une API REST accessible, par exemple :
+  `GET /produits/{productId}` qui retourne un DTO Produit avec notamment la propriété `seuilGroupage`.
+
+### 2. Vérification du seuil dans la création d’une commande
+
+* Lors de la création d’une commande (endpoint POST dans Commande), effectuer ces étapes :
+
+  * Appeler le microservice Produit pour récupérer le seuil de groupage du produit demandé.
+  * Interroger la base Commande locale pour calculer la quantité déjà commandée pour ce produit (somme des quantités des commandes en cours).
+  * Additionner la quantité existante et la quantité demandée.
+  * Comparer cette somme au seuil de groupage.
+  * Si le total dépasse le seuil, refuser la commande et retourner une erreur claire au client (ex: HTTP 400 avec message "Seuil de groupage dépassé").
+  * Sinon, créer et sauvegarder la commande normalement.
+
+### 3. Gestion des erreurs
+
+* En cas d’échec de communication avec le microservice Produit (timeout, erreur réseau, produit introuvable), gérer l’erreur proprement :
+
+  * Retourner un message d’erreur approprié (ex: HTTP 503 Service Unavailable).
+  * Ne pas créer la commande.
+  * Journaliser l’erreur pour suivi.
+
+### 4. Tests
+
+* Créer des tests unitaires et d’intégration simulant :
+
+  * Réponses correctes du microservice Produit avec seuil différents.
+  * Dépassement du seuil.
+  * Erreurs de communication (simuler timeout, produit non trouvé).
+* Tests vérifiant que la commande n’est créée que si le seuil n’est pas dépassé.
+
+---
+
+## Architecture technique / composants concernés
+
+* **Microservice Commande** :
+
+  * Classe Feign Client `ProduitClient` avec méthode `getProduitById(String productId)`.
+  * Service `CommandeService` avec méthode `createCommande` modifiée pour inclure la vérification du seuil.
+  * Exception personnalisée (ex: `SeuilGroupageDepasseException`) pour gestion spécifique du dépassement.
+* **Microservice Produit** :
+
+  * API REST exposant les détails produit avec seuil de groupage.
+  * DTO `ProduitDTO` avec champ `seuilGroupage`.
+* **Base de données Commande** :
+
+  * Pas de modification nécessaire.
+* **Logs & monitoring** :
+
+  * Logguer les appels Feign et erreurs de communication.
+
+---
+
+## Exemple de flux
+
+1. Client POST `/commandes` avec `productId` et `quantity`.
+2. CommandeService appelle ProduitClient.getProduitById(productId).
+3. Récupère `seuilGroupage`.
+4. Calcule la somme des quantités déjà commandées.
+5. Compare avec `seuilGroupage`.
+6. Si dépassement → exception, erreur renvoyée.
+7. Sinon → commande créée et sauvegardée.
+
+---
+
+## Livrables attendus
+
+* Code source modifié avec la nouvelle logique.
+* Tests unitaires et d’intégration.
+* Documentation technique (README, commentaires).
+* Documentation utilisateur / API mise à jour.
+
+---
+
+## Contraintes & recommandations
+
+* Respecter les bonnes pratiques de développement Spring Boot et Feign.
+* Penser à la résilience (timeout, circuit breaker si possible).
+* Prévoir la montée en charge avec appels asynchrones ou cache si besoin.
+* Garder une séparation claire des responsabilités entre microservices.
+
+---
+
+Si tu veux, je peux te préparer un squelette de code ou un exemple d’implémentation Feign + gestion erreurs, pour que tu sois prêt à l’intégrer dès que le microservice Produit sera dispo.

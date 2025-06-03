@@ -184,8 +184,16 @@ export default function HomePage(){
                     ))}
             </div>
                 </section>
+
+                <section className="section3">
+                <h1 className="title-section">Nos produits</h1>
+                    <div>
+
+                    </div>
+                </section>
+
                 </div>
-        
+                
         </div>
     )
 }
