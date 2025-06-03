@@ -37,7 +37,7 @@ public class Produit {
     @Column(name = "quantite_disponible")
     private Integer quantiteDisponible;
 
-    @Column(name = "date_limite_groupage")
+    @Column(name = "  date_limite_groupage")
     private LocalDateTime dateLimiteGroupage;
 
     private String image; // URL ou nom de fichier
