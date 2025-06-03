@@ -47,8 +47,9 @@ public class ProduitService {
         produit.setPrixUnitaire(dto.getPrixUnitaire());
         produit.setSeuilMinimum(dto.getSeuilMinimum());
         produit.setQuantiteDisponible(dto.getQuantiteDisponible());
+        produit.setDateLimiteGroupage(dto.getDateLimiteGroupage());
         produit.setImage(dto.getImage());
-        // produit.setIdGrossiste(dto.getIdGrossiste()); // 👈 ajouter cette ligne
+        produit.setIdGrossiste(dto.getIdGrossiste()); // 👈 ajouter cette ligne
         return produitRepository.save(produit);
     });
 }

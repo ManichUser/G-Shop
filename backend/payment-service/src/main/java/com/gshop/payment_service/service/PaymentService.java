@@ -88,6 +88,7 @@ public class PaymentService {
                                 log.info("Payment {} initiated with external ref: {}", savedPayment.getId(), externalRef);
                                 return Mono.just(mapToPaymentResponse(savedPayment, instructionMessage));
                             })
+                            .cast(PaymentResponse.class) // <-- Ajouté pour lever l'ambiguïté de type
                             .onErrorResume(e -> {
                                 log.error("Failed to initiate payment for external order ID {}: {}", request.getExternalOrderId(), e.getMessage());
                                 // Optionnel: Mettre à jour le statut du paiement à FAILED en DB ici si l'initiation échoue
