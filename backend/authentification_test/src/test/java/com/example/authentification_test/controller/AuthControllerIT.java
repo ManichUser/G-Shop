@@ -21,12 +21,12 @@ class AuthControllerIT {
     void shouldRegisterUserSuccessfully() throws Exception {
         String json = """
     {
-        \"firstName\": \"Jane\",
-        \"lastName\": \"Doe\",
-        \"email\": \"jane@example.com\",
-        \"password\": \"pass1234\",
+        \"firstName\": \"gshop\",
+        \"lastName\": \"admin\",
+        \"email\": \"bytemastermindtest@gmail.com\",
+        \"password\": \"1234admin\",
         \"phoneNumber\": \"690123456\",
-        \"adress\": \"Bafoussam\"
+        \"adress\": \"dschang\"
     }
     """;
 
@@ -42,8 +42,8 @@ class AuthControllerIT {
     void shouldFailLoginWithInvalidUser() throws Exception {
         String login = """
     {
-        \"email\": \"wrong@example.com\",
-        \"password\": \"wrongpass\"
+        \"email\": \"bytemastermindtest1@gmail.com\",
+        \"password\": \"1234admin\"
     }
     """;
 
