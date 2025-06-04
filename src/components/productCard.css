@@ -1,0 +1,35 @@
+.ProductCard{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 10px;
+    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+.ProductCard:hover{
+    transform: scale(1.05);
+}
+img{
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+.footer_ProduitCard{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    color: rgb(47, 0, 255);
+    justify-content: center;
+}
+.price{
+    color: rgb(47, 0, 255);
+}
+.card-name{
+    color: black;
+}
