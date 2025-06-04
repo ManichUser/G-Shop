@@ -1,0 +1,32 @@
+<!--
+Ce fichier est un point d'entrée pour ouvrir le rapport généré.
+Après avoir lancé :
+    mvn test
+    mvn surefire-report:report
+Ouvrez target/site/surefire-report.html dans votre navigateur.
+-->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport de tests unitaires - Panier Service</title>
+</head>
+
+<body>
+    <h1>Rapport de tests unitaires</h1>
+    <p>Après exécution des tests, ouvrez <code>target/site/surefire-report.html</code> pour voir le rapport détaillé.</p>
+    <p>
+        <a href="target/site/surefire-report.html">Voir le rapport généré</a>
+    </p>
+    <hr>
+    <h2>Étapes pour générer et visualiser le rapport</h2>
+    <ol>
+        <li>Ouvrez un terminal à la racine du projet.</li>
+        <li>Lancez les tests avec : <code>mvn test</code></li>
+        <li>Générez le rapport HTML avec : <code>mvn surefire-report:report</code></li>
+        <li>Ouvrez le fichier <code>target/site/surefire-report.html</code> dans votre navigateur.</li>
+    </ol>
+</body>
+
+</html>
