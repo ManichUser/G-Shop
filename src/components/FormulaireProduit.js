@@ -8,7 +8,7 @@ export default function FormulaireGrouppage(){
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Vous avez commandé ${quantity} unité(s) pour un total de €${totalPrice}`);
+    alert(`Vous avez commandé ${quantity} unité(s) pour un total de ${totalPrice} FCFA`);
   };
 
   return (

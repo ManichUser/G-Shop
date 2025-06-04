@@ -142,14 +142,18 @@ export default function HomePage(){
                 <section className="section1" >
                     <h1 className="title-section">Produits Popullaires</h1>
                     <div className="product-popular-container">
-                        {ProductList.map((p)=>(
+                      
+                       {ProductList.map((p)=>(
+                        <div className='product-popular'>
                             <ProductCard
                                 id={p.id} 
                                 ProductName={p.Nom}
                                 price={p.price}
                                 img={p.img}
                                 StarNbr={p.NbreStar}
-                            />))}
+                            />
+                        </div>))}
+                    
                     </div>
                     <div>
                         <div  id="LeftChevron" className="button-fleche">
@@ -176,10 +180,9 @@ export default function HomePage(){
             <div className="Cath-selection">
                     {categories.map((categorie) => (
                         <div key={categorie.id} className="Cath-card">
-                            {/* <img className="aire-img" src={aire.image} alt={aire.name} /> */}
                             {categorie.icon}
-                            <h3>{categorie.name}</h3>
-                            <p>{categorie.description}</p>
+                            <h3 style={{color:'black'}}>{categorie.name}</h3>
+                            <p style={{color:'black'}}>{categorie.description}</p>
                         </div>
                     ))}
             </div>
@@ -187,8 +190,19 @@ export default function HomePage(){
 
                 <section className="section3">
                 <h1 className="title-section">Nos produits</h1>
-                    <div>
-
+                <div className="product-container">
+                        {ProductList.map((p)=>(
+                            <div className='produit-vinted'>
+                            <ProductCard
+                                id={p.id} 
+                                ProductName={p.Nom}
+                                price={p.price}
+                                img={p.img}
+                                StarNbr={p.NbreStar}
+                                hideStar={true}
+                            />
+                            </div>
+                            ))}
                     </div>
                 </section>
 

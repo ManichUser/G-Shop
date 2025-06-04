@@ -1,47 +1,60 @@
-import './aboutUs.css';
-// import GrandSage from './../composant/grandSage';
-// import teamPhoto1 from './../assets/dibakto-manich.jpg'; 
-// import teamPhoto2 from './../assets/towa-josephine.jpeg';
-// import teamPhoto3 from './../assets/enga-carnelle.jpeg';
-// import Aipord from '../assets/Aipord.png'
+import React from "react";
+import "./aboutUs.css";
 
-function AboutUs() {
+const AboutUs = () => {
   return (
-    <section className="about-us">
-       <div class='GS-container'>
-       {/* <GrandSage variant='normal'/> */}
-       </div>
-      <div className="about-content">
-        <h1 className="about-title">Apropos de  G-Shop</h1>
-        <p className="about-text">
-         G-SHOP est votre site revolutionnaire qui vien aujourd'hui changer votre experience dans l'achat et la revente en ligne
-        </p>
+    <>
+      <section className="about-section fade-in">
+        <div className="about-container">
+          <h2 className="about-title slide-up">G-Shop, c’est quoi ?</h2>
+          <p className="about-subtitle slide-up">
+            G-Shop est une plateforme innovante qui démocratise les achats groupés
+            et favorise la revente entre particuliers grâce à son espace Vinted intégré.
+          </p>
 
-        
-        {/* Section Team */}
-        <div className="about-team">
-          <div className="team-member">
-            {/* <img src={teamPhoto1} alt="Dibakto Manich" /> */}
-            <h3>Dibakto Manich</h3>
-            <p>Développeur Fullstack</p>
+          <div className="about-grid">
+            <div className="about-card slide-up">
+              <h3>Les achats groupés pour tous</h3>
+              <p>
+                Profitez de tarifs dégressifs sans avoir à commander seul en grande quantité.
+                Créez ou rejoignez un groupe d’achat et consommez autrement.
+              </p>
+            </div>
+
+            <div className="about-card slide-up">
+              <h3>Un espace Vinted intégré</h3>
+              <p>
+                Vendez et achetez des articles d’occasion en toute sécurité.
+                G-Shop favorise une consommation durable, économique et solidaire.
+              </p>
+            </div>
+
+            <div className="about-card slide-up">
+              <h3>Une communauté modérée</h3>
+              <p>
+                G-Shop garantit un environnement sécurisé grâce à une équipe de modération
+                dédiée et des outils de signalement efficaces.
+              </p>
+            </div>
+
+            <div className="about-card slide-up">
+              <h3>Sécurité et transparence</h3>
+              <p>
+                Paiements sécurisés, données protégées et assistance complète :
+                achetez, vendez et participez aux achats groupés en toute sérénité.
+              </p>
+            </div>
           </div>
-          
-          <div className="team-member">
-            {/* <img src={teamPhoto2} alt="Towa Josephine" /> */}
-            <h3>Towa Josephine</h3>
-            <p>Responsable Agent GrandSage</p>
-          </div>
-          
-          <div className="team-member">
-            {/* <img src={teamPhoto3} alt="Enga Carnelle" /> */}
-            <h3>Enga Carnelle</h3>
-            <p>Gestionnaire de Base de Données</p>
+
+          <div className="about-footer slide-up">
+            <p>
+              Réalisé avec passion par l'équipe <span className="team-name">ByteMastermind</span>.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
-}
+};
 
 export default AboutUs;
-

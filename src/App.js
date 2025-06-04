@@ -12,6 +12,10 @@ import Inscription from './pages/Inscription';
 import Login from './pages/Login';
 import FournisseurFormulaire from './components/formulaire_fournisseur';
 import FloatingIcon from "./components/FloatingIcons";
+// import GroupageCard from './components/GroupageCard';
+import GroupagePage from './pages/GroupagePage';
+import Footer from './components/Footer';
+import ContactUs from './pages/contactUs';
 
 function App() {
   return (
@@ -28,7 +32,10 @@ function App() {
         <Route path="/s'inscrire" element={<Inscription/>} />
         <Route path="/login" element={<Login/>} />
         <Route path='/Formulaire-Fournisseur' element={<FournisseurFormulaire/>}/>
+        <Route path='/contact-us' element={<ContactUs/>}/>
+        <Route path='/groupage-produit' element={<GroupagePage/>}/>
       </Routes>
+      <Footer/>
      </Router>
    
   );

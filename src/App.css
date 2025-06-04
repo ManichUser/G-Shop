@@ -3,3 +3,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #111010;
+}
+
+p {
+    font-size: 14px;
+    color: #0e0c0c;
+    margin-top: 10px;
+}
+

@@ -32,7 +32,7 @@ export default function Inscription (){
                     <form className="form-Inscription" method="POST" >
                     
                         <div className="info-Inscription">
-                            <h1>S'inscrire</h1>
+                            <h1 style={{color:'White'}}>S'inscrire</h1>
                             <p style={{padding:7,fontSize:13,color:'white'}}> Inscrivez-vous maintenant et beneficiez de nos fonctionnalites
                                 exclusives en matieres d'achats vente
                             </p>

@@ -33,7 +33,10 @@
     padding: 0 20px 20px 20px;
 
 }
-
+.message-for-user{
+    color: black;
+    font-weight: bold;
+}
 #name-app{
     font-size: 50px;
     font-weight: bold;
@@ -45,9 +48,8 @@
     gap: 20px;
     height: 35px;
     flex-direction: column;
-    
-    
 }
+
 .boutton{
     background-color: rgb(7, 7, 150);
     padding: 10px;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './paiementCard.css';
 
-function PaiementCard() {
+function PaiementCard({product}) {
   const [modePaiement, setModePaiement] = useState('carte');
 
   const handleChange = (event) => {

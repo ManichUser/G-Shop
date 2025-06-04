@@ -19,7 +19,8 @@ export default function SideBar(){
                 <nav className="sidebar-nav">
                     <Link to="/Mes-Achats" className="nav-link">Mes Achats</Link>
                     <Link to="/Formulaire-Fournisseur">Devenir Fourmisseur</Link>
-                    <Link to="/Apropos" className="nav-link">A propos</Link>
+                    <Link to="/Apropos" className="nav-link">Nous Connaitre</Link>
+                    <Link to="/contact-us" className="nav-link">Un soucis?</Link>
                 </nav>
             </div>
         </>

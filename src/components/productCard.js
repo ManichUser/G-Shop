@@ -19,16 +19,17 @@ export default function ProductCard({   hideName=false,
                                         Qte=0,
                                         localisation='Dschang',
                                         StarNbr=0.0
-
                                     }){
 
     return(
         <div key={id} className="ProductCard">
             {!hideimg && <img src={img} alt="produit-img"/>}
-            {!hideName&&<label>{ProductName} </label>}
+            {!hideName&&<h3 className='card-name'>{ProductName} </h3>}
             <div className="footer_ProduitCard">
-            { !hideprice&&<p>{price}<span> Fr</span></p>}
-            {!hideStar&&<p style={{display:'flex',justifyContent:'center',alignItems:'center',gap:5}}><FaStar color="gold" size={20}/> <span>{StarNbr}</span></p>}
+            { !hideprice&&<p className='price'>{price}<span> Fr</span></p>}
+            {!hideStar&&<p style={{display:'flex',justifyContent:'center',alignItems:'center',gap:5}}>
+            <FaStar color="gold" size={20}/> 
+            <span>{StarNbr}</span></p>}
             </div>
         </div>
     )

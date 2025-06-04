@@ -1,19 +1,13 @@
 
-// src/components/GroupageCard.js
 import React, { useState, useEffect } from 'react';
-import './GroupageCard.css'; // Importation du fichier de style CSS
+import './GroupageCard.css'; 
+import casque from '../assets/casque.jpeg'
 
-// Note sur les images :
-// Si vos images sont dans le dossier 'public' (ex: public/images/monimage.jpeg),
-// utilisez des chemins absolus comme '/images/monimage.jpeg' directement dans la prop 'image'.
-// Si vos images sont dans le dossier 'src' (ex: src/assets/monimage.jpeg),
-// vous devrez les importer en haut de ce fichier (ex: import smartphoneImage from '../assets/monimage.jpeg';)
-// et ensuite utiliser la variable importée (image: smartphoneImage,).
-// J'ai mis des URLs de placeholder pour la démonstration.
 
-const GroupageCard = ({ groupage }) => {
-  // Données de groupage par défaut utilisées si aucune prop 'groupage' n'est fournie.
-  // Idéalement, un composant comme celui-ci devrait toujours recevoir ses données via props.
+
+
+export   default function GroupageCard({ groupage,hideForm=false }) {
+
   const defaultGroupage = {
     id: 'grp-default',
     productName: 'Produit par Défaut',
@@ -22,14 +16,14 @@ const GroupageCard = ({ groupage }) => {
     pricePerUnit: 80,
     regularPrice: 120,
     deadline: '2025-06-15T23:59:59',
-    image: 'https://via.placeholder.com/150/CCCCCC/000000?text=Produit+Defaut', // URL de placeholder
-    participants: [{ id: 'pA', name: 'Alpha' }, { id: 'pB', name: 'Bêta' }],
+    image: casque,
+    participants: [{ id: 1, name: 'Bob' }, { id: 1, name: 'Alexia' }],
     description: "Ceci est un exemple de groupage par défaut pour la démonstration.",
   };
 
-  const currentGroupage = groupage || defaultGroupage; // Utilise la prop 'groupage' ou les données par défaut.
+  const currentGroupage = groupage || defaultGroupage; 
 
-  const { // Déstructuration des propriétés de l'objet 'currentGroupage' pour un accès facile.
+  const { 
     productName,
     targetQuantity,
     currentQuantity,
@@ -41,20 +35,20 @@ const GroupageCard = ({ groupage }) => {
     description
   } = currentGroupage;
 
-  const progress = (currentQuantity / targetQuantity) * 100; // Calcul du pourcentage de progression.
-  const remainingQuantity = targetQuantity - currentQuantity; // Calcul des unités restantes.
-  const timeLeft = new Date(deadline).getTime() - new Date().getTime(); // Calcul du temps restant en millisecondes.
-  const [timeRemaining, setTimeRemaining] = useState(timeLeft > 0 ? timeLeft : 0); // État pour le compte à rebours.
+  const progress = (currentQuantity / targetQuantity) * 100;
+  const remainingQuantity = targetQuantity - currentQuantity; 
+  const timeLeft = new Date(deadline).getTime() - new Date().getTime();
+  const [timeRemaining, setTimeRemaining] = useState(timeLeft > 0 ? timeLeft : 0); 
 
-  useEffect(() => { // Hook d'effet pour gérer le compte à rebours.
-    if (timeRemaining <= 0) return; // Arrête le timer si le temps est écoulé.
-    const timer = setInterval(() => { // Met à jour le temps restant toutes les secondes.
+  useEffect(() => { 
+    if (timeRemaining <= 0) return;
+    const timer = setInterval(() => { 
       setTimeRemaining(prevTime => prevTime - 1000);
     }, 1000);
-    return () => clearInterval(timer); // Fonction de nettoyage pour arrêter le timer.
-  }, [timeRemaining]); // Dépendance : l'effet se re-déclenche si 'timeRemaining' change.
+    return () => clearInterval(timer); 
+  }, [timeRemaining]); 
 
-  const formatTime = (ms) => { // Fonction utilitaire pour formater le temps.
+  const formatTime = (ms) => { 
     const days = Math.floor(ms / (1000 * 60 * 60 * 24));
     const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
@@ -62,13 +56,14 @@ const GroupageCard = ({ groupage }) => {
     return `${days}j ${hours}h ${minutes}m ${seconds}s`;
   };
 
-  const handleParticipate = () => { // Fonction appelée au clic sur "Participer".
+  const handleParticipate = () => { 
     alert(`Vous avez cliqué pour participer au groupage "${productName}" !`);
-    // Ici : logique réelle d'appel API, gestion de l'utilisateur, etc.
+    
+    
   };
 
   return (
-    <div className="groupage-card"> {/* Conteneur principal d'UNE seule carte */}
+    <div className="groupage-card"> 
       <div className="groupage-header">
         <img src={image} alt={productName} className="groupage-image" />
         <div className="groupage-info">
@@ -117,7 +112,7 @@ const GroupageCard = ({ groupage }) => {
         </div>
       </div>
 
-      <div className="groupage-actions">
+{ !hideForm && (<div className="groupage-actions">
         {timeRemaining > 0 && remainingQuantity > 0 ? (
           <button className="participate-button" onClick={handleParticipate}>
             Participer au Groupage
@@ -127,9 +122,8 @@ const GroupageCard = ({ groupage }) => {
             Groupage Terminé ou Objectif Atteint
           </button>
         )}
-      </div>
+      </div>)}
     </div>
   );
 };
 
-export default GroupageCard;

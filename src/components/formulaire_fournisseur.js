@@ -99,28 +99,28 @@ export default function FournisseurFormulaire () {
         {step === 3 && (<div className='etape-3'>
           <h2 className='h2'>Informations Bancaires</h2>
           <label className='label' >Nom de la banque :</label>
-          <input className='input'  type="text" name="banque" />
+          <input className='input'  type="text" name="banque" />
 
           <label className='label' >Nom du titulaire du compte :</label>
-          <input className='input'  type="text" name="titulaire_compte" />
+          <input className='input'  type="text" name="titulaire_compte" />
 
           <label className='label' >Numéro de compte / RIB :</label>
-          <input className='input'  type="text" name="rib" />
+          <input className='input'  type="text" name="rib" />
 
           <label className='label' >IBAN / SWIFT :</label>
-          <input className='input'  type="text" name="iban" />
+          <input className='input'  type="text" name="iban" />
         </div>)}
 
         { step === 4 && (<div className='etape-4'>
           <h2 className='h2'>Produits</h2>
           <label className='label' > <span style={{color:'red'}}>* </span> Catégories de produits :</label>
-          <input  type='text' className='input' required  name="categories" />
+          <input  type='text' className='input' required  name="categories" />
 
           <label className='label' >Quantité moyenne disponible / mois :</label>
-          <input className='input'  type="number" min={0} name="quantite" />
+          <input className='input' type="number" min={0} name="quantite" />
 
           <label className='label' >Délais de livraison estimés :</label>
-          <input className='input'  type="text" name="delais" />
+          <input className='input'  type="text" name="delais" />
 
           <label className='label' >Zone de livraison :</label>
           <select className='select' name="zone">
@@ -139,31 +139,31 @@ export default function FournisseurFormulaire () {
         </select>
 
         <label className='label' >Garantie offerte :</label>
-        <input className='input'  type="text" name="garantie" />
+        <input className='input'  type="text" name="garantie" />
 
-        <label className='label' >Service client disponible ?</label>
+        <label className='label' >Service client disponible ?</label>
         <select className='select' name="service_client">
           <option value="oui">Oui</option>
           <option value="non">Non</option>
         </select>
 
         <label className='label' >Horaires du service client :</label>
-        <input className='input'  type="text" name="horaires" />
+        <input className='input'  type="text" name="horaires" />
         </div>)}
 
       {step === 6 && (<div className='etape-6'>
         <h2 className='h2' >Engagement</h2>
           <p>Je certifie que les informations fournies sont exactes et je m’engage à respecter les conditions d’utilisation de la plateforme.</p>
           <label className='label' ><span style={{color:'red'}}>* </span>Nom :</label>
-          <input className='input' required  type="text" name="nom_engagement" />
+          <input className='input' required  type="text" name="nom_engagement" />
           <button className='button' type="submit">Soumettre</button>
       </div>)}
       <div className='prev-next'>
         {step > 1 && (<button className='button' type="button" onClick={prevStep} >Precedent</button>)}
         {step < 6 && (<button className='button' type="button" onClick={nextStep} >Suivant</button>)}
-      </div>
-      </form>
-     
-    </div>
-  );
+      </div>
+    </form>
+
+  </div>
+  );
 };
