@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -97,7 +98,7 @@ import static org.mockito.Mockito.when;
                 .email("prod@test.com")
                 .enabled(true)
                 .currentRole(Role.USER)
-                .availableRoles(Set.of(Role.USER))
+                .availableRoles(new HashSet<>(Set.of(Role.USER)))
                 .build();
 
         ProducerRegisterRequest request = new ProducerRegisterRequest();
