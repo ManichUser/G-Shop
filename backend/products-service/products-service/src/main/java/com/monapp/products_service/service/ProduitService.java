@@ -49,7 +49,7 @@ public class ProduitService {
         produit.setQuantiteDisponible(dto.getQuantiteDisponible());
         produit.setDateLimiteGroupage(dto.getDateLimiteGroupage());
         produit.setImage(dto.getImage());
-        produit.setIdGrossiste(dto.getIdGrossiste()); // 👈 ajouter cette ligne
+        produit.setIdGrossiste(dto.getIdGrossiste()); 
         return produitRepository.save(produit);
     });
 }
